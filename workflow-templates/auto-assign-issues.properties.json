@@ -1,0 +1,6 @@
+{
+  "name": "Mt. SAC Issue Auto-assignment",
+  "description": "Automatically assign every newly opened issue to the club maintainer.",
+  "iconName": "octicon person-add",
+  "categories": ["Automation"]
+}

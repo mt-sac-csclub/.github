@@ -1,0 +1,6 @@
+{
+  "name": "Mt. SAC Node CI",
+  "description": "Install dependencies and run available lint, test, and build scripts using the club dev-to-main workflow.",
+  "iconName": "octicon check-circle",
+  "categories": ["JavaScript", "TypeScript"]
+}

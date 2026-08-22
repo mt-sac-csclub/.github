@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  push:
+    branches: [dev]
+  pull_request:
+    branches: [$default-branch]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: CI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require dev to production pull requests
+        if: github.event_name == 'pull_request'
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          if [ "$HEAD_REF" != "dev" ]; then
+            echo "Pull requests into the production branch must come from dev."
+            exit 1
+          fi
+
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up pnpm
+        if: hashFiles('pnpm-lock.yaml') != ''
+        uses: pnpm/action-setup@v6
+        with:
+          version: 11
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Install and validate
+        shell: bash
+        run: |
+          if [ -f pnpm-lock.yaml ]; then
+            pnpm install --frozen-lockfile
+            pnpm run --if-present lint
+            pnpm run --if-present test
+            pnpm run --if-present build
+          elif [ -f package-lock.json ]; then
+            npm ci
+            npm run lint --if-present
+            npm test --if-present
+            npm run build --if-present
+          else
+            npm install
+            npm run lint --if-present
+            npm test --if-present
+            npm run build --if-present
+          fi
