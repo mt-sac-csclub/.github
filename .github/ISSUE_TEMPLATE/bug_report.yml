@@ -1,0 +1,33 @@
+name: Bug report
+description: Report a reproducible problem in a club project.
+title: "[Bug]: "
+assignees:
+  - Casper015
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for helping us improve the project. Please do not include passwords, API keys, or private student information.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Explain the problem and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: "1. Open...\n2. Tap...\n3. See..."
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Device or environment
+      placeholder: iPhone 15 / Safari, Windows 11 / Chrome, Node 22, etc.
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Add screenshots or logs after removing private information.
