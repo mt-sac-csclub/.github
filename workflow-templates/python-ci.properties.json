@@ -1,0 +1,6 @@
+{
+  "name": "Mt. SAC Python CI",
+  "description": "Install Python dependencies, compile source files, and run tests using the club dev-to-main workflow.",
+  "iconName": "octicon check-circle",
+  "categories": ["Python"]
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Mt. SAC Dependency Review",
+  "description": "Block pull requests that introduce dependencies with moderate-or-higher known vulnerabilities.",
+  "iconName": "octicon shield-check",
+  "categories": ["Security"]
+}

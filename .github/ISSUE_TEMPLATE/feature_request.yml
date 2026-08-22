@@ -1,0 +1,32 @@
+name: Feature request
+description: Suggest an improvement for a club project.
+title: "[Feature]: "
+assignees:
+  - Casper015
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: What need would this address?
+      description: Describe the student, officer, or contributor problem.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Explain the smallest useful version of the idea.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: dropdown
+    id: contribution
+    attributes:
+      label: Would you like to help implement it?
+      options:
+        - Yes
+        - Maybe, with guidance
+        - Not right now
